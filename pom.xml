@@ -14,6 +14,58 @@
 
     <name>Global Overlay Parent</name>
     <description>The root project definition for the uPortal Overlay project.</description>
+    
+    <scm>
+        <developerConnection>scm:git:git@github.com:UW-MultiEnvironment-Build/global-overlay-parent.git</developerConnection>
+        <connection>scm:git:git://github.com/UW-MultiEnvironment-Build/global-overlay-parent.git</connection>
+        <url>https://github.com/UW-MultiEnvironment-Build/global-overlay-parent</url>
+    </scm>
+
+    <!-- TODO point these to the local maven repository.
+    <repositories>
+        <repository>
+            <id>example.com-releases</id>
+            <url>https://example.com/maven/content/repositories/example-releases/</url>
+        </repository>
+        <repository>
+            <id>example.com-3rd-party</id>
+            <url>https://example.com/maven/content/repositories/example-3rd-party/</url>
+        </repository>
+        <repository>
+            <id>example.com-snapshots</id>
+            <url>https://example.com/maven/content/repositories/example-snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>example.com-releases</id>
+            <url>https://example.com/maven/content/repositories/example-releases/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>example.com-3rd-party</id>
+            <url>https://example.com/maven/content/repositories/example-3rd-party/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>example.com-snapshots</id>
+            <url>https://example.com/maven/content/repositories/example-snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>example.com-releases</id>
+            <url>https://example.com/maven/content/repositories/example-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>example.com-snapshots</id>
+            <url>https://example.com/maven/content/repositories/example-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    -->
 
     <build>
         <pluginManagement>
