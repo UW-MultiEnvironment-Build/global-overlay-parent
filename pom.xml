@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:merge="http://maven.apache.org/plugin-merge" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>org.jasig.portal</groupId>
+        <artifactId>uportal-parent</artifactId>
+        <version>4.0.11</version>    
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jasig.portal.overlay</groupId>
+    <artifactId>global-overlay-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Global Overlay Parent</name>
+    <description>The root project definition for the uPortal Overlay project.</description>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <!-- 
+                     | Configure the resources plugin to include our token-decryption
+                     | filtering plugin
+                     +-->
+                    <configuration>
+                        <mavenFilteringHints>
+                            <mavenFilteringHint>custom</mavenFilteringHint>
+                        </mavenFilteringHints>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>edu.wisc.doit.tcrypt</groupId>    
+                            <artifactId>tcrypt-filtering-resources-plugin</artifactId>
+                            <version>1.0.3</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <!-- 
+                     | Configure release plugin for doing overlay releases
+                     | - Don't use the default release profile, we are going to define our own behavior
+                     | - Do automatic versioning, these projects are run by automated tools so we don't want prompts
+                     | - For release:prepare only do 'clean' to significantly speed up the build process
+                     | - Ignore changes to version controlled files, needed to deal with automated version number updates
+                     +-->
+                    <configuration>
+                        <mavenExecutorId>forked-path</mavenExecutorId>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <localCheckout>false</localCheckout>
+                        <arguments>-PDOESNOTEXIST</arguments>
+                        <preparationGoals>clean</preparationGoals>
+                        <checkModificationExcludes>
+                            <value>*</value>
+                            <value>**/*</value>
+                        </checkModificationExcludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
